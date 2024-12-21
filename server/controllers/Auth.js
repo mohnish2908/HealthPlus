@@ -188,7 +188,7 @@ exports.login = async (req, res) => {
       user.token = token;
       await user.save();
       user.password = undefined;
-
+      
       
 
       // user=user.toObject();
@@ -200,8 +200,7 @@ exports.login = async (req, res) => {
         httpOnly: true, // Cookie accessible only by the web server
       };
 
-      res.cookie("token", token, options /*{ ...options, maxAge: 24 * 60 * 60 * 1000 }*/)
-        /*.cookie("refreshToken", refreshToken, options)*/
+      res.cookie("token", token, options)
         .status(200)
         .json({
           success: true,

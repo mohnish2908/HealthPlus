@@ -10,6 +10,8 @@ const {
 } = require("../controllers/payments")
 
 const { auth, isInstructor, isClient, isAdmin } = require("../middlewares/auth")
+
+
 router.post("/capturePayment", auth, isClient, capturePayment)
 router.post("/verifyPayment", auth, isClient, verifyPayment)
 router.post("/sendPaymentSuccessEmail",auth,isClient,sendPaymentSuccessEmail)

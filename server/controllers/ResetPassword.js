@@ -92,4 +92,4 @@ exports.resetPassword = async (req, res) => {
         message: `Some Error in Updating the Password`,
       })
     }
-  }
+}

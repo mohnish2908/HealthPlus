@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 // Define the course schema using the Mongoose Schema constructor
 const courseSchema = new mongoose.Schema({
     courseName:
-    { type: String 
-
+    { 
+        type: String 
     },
     courseDescription: { 
         type: String 

@@ -10,19 +10,19 @@ import TrackCalorie from "./components/core/Dashboard/TrackCalorie/TrackCalorie"
 import Navbar from "./components/common/Navbar"; //
 import OpenRoute from "./components/core/Auth/OpenRoute"; //
 import PrivateRoute from "./components/core/Auth/PrivateRoute"; //
-import AddCourse from "./components/core/Dashboard/AddCourse"
+import AddCourse from "./components/core/Dashboard/AddCourse";
 import Cart from "./components/core/Dashboard/Cart/index";
-import EditCourse from "./components/core/Dashboard/EditCourse" //=
+import EditCourse from "./components/core/Dashboard/EditCourse"; //=
 import EnrolledCourses from "./components/core/Dashboard/EnrolledCourses";
-import Instructor from "./components/core/Dashboard/InstructorDashboard/Instructor" //=
-import MyCourses from "./components/core/Dashboard/MyCourses"
+import Instructor from "./components/core/Dashboard/InstructorDashboard/Instructor"; //=
+import MyCourses from "./components/core/Dashboard/MyCourses";
 import MyProfile from "./components/core/Dashboard/MyProfile";
 import Settings from "./components/core/Dashboard/Settings";
-// import VideoDetails from "./components/core/ViewCourse/VideoDetails"
+import VideoDetails from "./components/core/ViewCourse/VideoDetails";
 import About from "./pages/About";
-import Catalog from "./pages/Catalog"
+import Catalog from "./pages/Catalog";
 import Contact from "./pages/Contact";
-import CourseDetails from "./pages/CourseDetails"
+import CourseDetails from "./pages/CourseDetails";
 import Error from "./pages/Error";
 import ForgotPassword from "./pages/ForgotPassword"; //
 // Pages
@@ -31,7 +31,7 @@ import Login from "./pages/Login"; //
 import Signup from "./pages/Signup"; //
 import UpdatePassword from "./pages/UpdatePassword";
 import VerifyEmail from "./pages/VerifyEmail";
-// import ViewCourse from "./pages/ViewCourse"
+import ViewCourse from "./pages/ViewCourse";
 // import { getUserDetails } from "./services/operations/profileAPI"
 import { ACCOUNT_TYPE } from "./utils/constants";
 import Dashboard from "./pages/Dashboard";
@@ -101,7 +101,7 @@ function App() {
         />
         <Route element=<PrivateRoute>{<Dashboard />}</PrivateRoute>>
           <Route path="dashboard/my-profile" element={<MyProfile />} />
-          <Route path="dashboard/track-calorie" element={<TrackCalorie/>}/>
+          <Route path="dashboard/track-calorie" element={<TrackCalorie />} />
           <Route path="dashboard/Settings" element={<Settings />} />
           {user?.accountType === ACCOUNT_TYPE.CLIENT && (
             <>
@@ -117,7 +117,26 @@ function App() {
               <Route path="dashboard/instructor" element={<Instructor />} />
               <Route path="dashboard/add-course" element={<AddCourse />} />
               <Route path="dashboard/my-courses" element={<MyCourses />} />
-              <Route path="dashboard/edit-course/:courseId" element={<EditCourse />}/>
+              <Route
+                path="dashboard/edit-course/:courseId"
+                element={<EditCourse />}
+              />
+            </>
+          )}
+        </Route>
+        <Route
+          element={
+            <PrivateRoute>
+              <ViewCourse />
+            </PrivateRoute>
+          }
+        >
+          {user?.accountType === ACCOUNT_TYPE.CLIENT && (
+            <>
+              <Route
+                path="view-course/:courseId/section/:sectionId/sub-section/:subSectionId"
+                element={<VideoDetails />}
+              />
             </>
           )}
         </Route>
